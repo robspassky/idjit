@@ -2,8 +2,10 @@
 #include "../Arguments.hpp"
 
 TEST_CASE( "Argument creation", "[Arguments]" ) {
-  const char *argv[]{ "foo", "bar", "zik" };
+  const char *argv[]{ "idjit", "init", "." };
   Arguments args{3, (char **)argv};
-  REQUIRE( args.count == 2 );
+  REQUIRE( args.command == "init" );
+  REQUIRE( args.args.size() == 1 );
+  REQUIRE( args.args[0] == "." );
 }
 

@@ -74,3 +74,38 @@ disclaimer
 This was coded for fun, not to replace YouTrack or JIRA (though it it does,
 that would be fun, too).
 
+commands
+========
+
+    $ idjit init <directory>
+
+Initialize an idjit tracking database in the given directory. This basically
+creates an sqlite database and runs the initial ddl.
+
+    $ idjit user <username> <email>
+
+Set the user which will be used for work done with this idjit database
+
+    $ idjit new <short job name> [acceptance criteria]
+
+This will create a new job. The only required argument is short job name.
+criteria defaults to ""
+owner is set to current user (configured above)
+importance is set to normal
+assignee is set to current user
+state is set to planning
+status is set to not started
+points is unset
+deadline is unset
+history has a single "created", "date", "creator"
+dependencies is empty
+tags is empty
+
+A uuid will be generated for the job and returned as the output of this command.
+
+uuid, "job name", state, status
+uuuuu jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj ssssssssssss tttttttttt
+
+    $ idjit jobs
+    $ idjit <uuid> field value
+

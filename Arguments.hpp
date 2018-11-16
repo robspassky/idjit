@@ -1,9 +1,13 @@
 #ifndef IDJIT__ARGUMENTS_HPP
 #define IDJIT__ARGUMENTS_HPP
 
+#include <string>
+#include <vector>
+
 class Arguments {
   public:
-    int count;
+    std::string command;
+    std::vector<std::string> args;
     Arguments(int argc, char **argv);
 };
 

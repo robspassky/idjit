@@ -6,7 +6,7 @@
 
 class Command {
   private:
-    int _count;
+    std::string _command;
   public:
     Command(Arguments args);
     void run(std::istream& is, std::ostream& os, std::ostream& es);
