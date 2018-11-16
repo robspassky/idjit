@@ -17,15 +17,19 @@ clean:
 	$(RM) -f idjit $(objects)
 
 # Unit Tests
+# (could be done with a tests/Makefile and a $(MAKE) -C here, but
+# both Makefiles are small enough I think it still works like this
 
 test_sources := $(wildcard tests/test_*.cpp)
+
 test_objects := $(test_sources:%.cpp=%.o)
-subject_objects := $(test_sources:tests/test_%.cpp=%.o)
+
+test_subjects := $(test_sources:tests/test_%.cpp=%.o)
 
 test: tests/test
 	./tests/test
 
-tests/test: tests/test.o $(test_objects) $(subject_objects)
+tests/test: tests/test.o $(test_objects) $(test_subjects)
 	$(CXX) -o tests/test $^
 
 cleantest:
