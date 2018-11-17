@@ -2,6 +2,10 @@ CXX = clang++
 
 CXXFLAGS = -O3 -std=c++17
 
+LDFLAGS = 
+
+LIBRARIES = -lsqlite3
+
 default: idjit
 
 all: idjit test
@@ -11,7 +15,7 @@ cleanall: clean cleantest
 objects := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 idjit: $(objects)
-	$(CXX) -o idjit $^
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBRARIES) -o idjit $^
 
 clean:
 	$(RM) -f idjit $(objects)
@@ -30,7 +34,7 @@ test: tests/test
 	./tests/test
 
 tests/test: tests/test.o $(test_objects) $(test_subjects)
-	$(CXX) -o tests/test $^
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBRARIES) -o tests/test $^
 
 cleantest:
 	$(RM) -f $(test_objects)

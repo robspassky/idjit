@@ -1,4 +1,5 @@
 *.o
 tests/test
 idjit
+.idjit.db
 
