@@ -43,7 +43,9 @@ SCENARIO( "db -- listing / adding jobs", "[Db]" ) {
   GIVEN( "one job in table" ) {
     REQUIRE( db.list_jobs().size() == 0 );
     db.upsert_job(job);
-    REQUIRE( db.list_jobs().size() == 1 );
+    auto jobs = db.list_jobs();
+    REQUIRE( jobs.size() == 1 );
+    REQUIRE( jobs[0].name == "create a test job" );
   }
 
 }

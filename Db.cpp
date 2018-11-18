@@ -73,7 +73,7 @@ CREATE TABLE history (
 
 int cb_list_jobs(void* context, int ncols, char** data, char** columns) {
   std::vector<Job>* presults = (std::vector<Job>*) context;
-  presults->push_back(Job{"auto popuplate", "auto"});
+  presults->push_back(Job{ncols, columns, data});
   return 0;
 }
 

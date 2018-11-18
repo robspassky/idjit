@@ -2,8 +2,6 @@
 #define IDJIT__JOB_HPP
 
 #include <string>
-#include <random>
-#include <sstream>
 
 using namespace std;
 
@@ -29,6 +27,7 @@ struct Job {
   int points;
   int deadline;
 
+  Job(int ncols, char **columns, char **data);
   Job(string shortname, string user) :
     name(shortname),
     owner(user),
@@ -36,6 +35,7 @@ struct Job {
   {
     id = "123456";
   }
+  Job() {}
 };
 
 #endif /* IDJIT__JOB_HPP */
