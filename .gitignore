@@ -2,4 +2,7 @@
 tests/test
 idjit
 .idjit.db
+include
+lib
+test_idjit.db
 

@@ -9,6 +9,7 @@ SCENARIO( "InitCommand -- create a database", "[InitCommand]" ) {
   InitCommand ic{vs};
 
   GIVEN( "not created" ) {
+    remove(".idjit.db");
     bool threw = false;
     try { ic.run(); } catch (std::exception e) { threw = true; }
     REQUIRE( threw == false );

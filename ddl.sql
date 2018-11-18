@@ -41,3 +41,4 @@ CREATE TABLE history (
   'deadline'   INTEGER,
   CONSTRAINT 'pk' PRIMARY KEY ('id', 'timestamp', 'author')
 );
+

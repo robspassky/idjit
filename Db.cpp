@@ -1,6 +1,7 @@
 #include "Db.hpp"
 #include <stdexcept>
 #include <unistd.h>
+#include <sstream>
 
 Db::Db(std::string path, bool create) {
   if (create && (access(path.c_str(), F_OK) != -1))
@@ -70,3 +71,50 @@ CREATE TABLE history (
   }
 }
 
+int cb_list_jobs(void* context, int ncols, char** data, char** columns) {
+  std::vector<Job>* presults = (std::vector<Job>*) context;
+  presults->push_back(Job{"auto popuplate", "auto"});
+  return 0;
+}
+
+std::vector<Job> Db::list_jobs() {
+  std::string sql = R"(SELECT * FROM jobs;)";
+  char *errmsg = nullptr;
+  std::vector<Job> results;
+  sqlite3_exec(_db, sql.c_str(), cb_list_jobs, &results, &errmsg);
+  if (errmsg != nullptr) {
+    std::string errstring(errmsg);
+    sqlite3_free(errmsg);
+    throw std::invalid_argument(errstring);
+  }
+  return results;
+}
+
+void Db::upsert_job(Job job) {
+  std::stringstream ss;
+  ss << R"(
+  INSERT OR REPLACE INTO jobs('id', 'name', 'criteria', 'owner', 'importance', 'assignee', 'state', 'status', 'points', 'deadline')
+  )";
+
+  ss << "  VALUES( ";
+  ss << "'" << job.id << "', ";
+  ss << "'" << job.name << "', ";
+  ss << "'" << job.criteria << "', ";
+  ss << "'" << job.owner << "', ";
+  ss << job.importance << ", ";
+  ss << "'" << job.assignee << "', ";
+  ss << job.state << ", ";
+  ss << job.status << ", ";
+  ss << job.points << ", ";
+  ss << job.deadline << ") ";
+
+  char *errmsg = nullptr;
+  sqlite3_exec(_db, ss.str().c_str(), NULL, NULL, &errmsg);
+  if (errmsg != nullptr) {
+    std::string errstring(errmsg);
+    sqlite3_free(errmsg);
+    throw std::invalid_argument(errstring);
+  }
+  return;
+
+}

@@ -28,3 +28,22 @@ SCENARIO( "db -- create a database", "[Db]" ) {
   }
 
 }
+
+SCENARIO( "db -- listing / adding jobs", "[Db]" ) {
+
+  remove("test_idjit.db");
+  Db db{"test_idjit.db", true};
+  db.initialize();
+  Job job{"create a test job", "tester"};
+
+  GIVEN( "no jobs are in table" ) {
+    REQUIRE( db.list_jobs().size() == 0);
+  }
+
+  GIVEN( "one job in table" ) {
+    REQUIRE( db.list_jobs().size() == 0 );
+    db.upsert_job(job);
+    REQUIRE( db.list_jobs().size() == 1 );
+  }
+
+}
