@@ -1,7 +1,5 @@
 #include "catch.hpp"
 #include "../InitCommand.hpp"
-#include <sys/stat.h>
-#include <stdio.h>
 #include <string>
 #include <vector>
 
