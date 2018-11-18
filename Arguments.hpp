@@ -3,12 +3,15 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 class Arguments {
+  private:
+    std::vector<std::string> _args;
+    std::map<std::string, std::string> _options;
   public:
-    std::string command;
-    std::vector<std::string> args;
-    Arguments(int argc, char **argv);
+    Arguments(int argc, char** argv);
+    const std::vector<std::string>& args() { return _args; }
 };
 
 #endif /* IDJIT__ARGUMENTS_HPP */

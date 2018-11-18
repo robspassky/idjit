@@ -3,9 +3,9 @@
 
 TEST_CASE( "Argument creation", "[Arguments]" ) {
   const char *argv[]{ "idjit", "init", "." };
-  Arguments args{3, (char **)argv};
-  REQUIRE( args.command == "init" );
-  REQUIRE( args.args.size() == 1 );
-  REQUIRE( args.args[0] == "." );
+  Arguments a{3, (char **)argv};
+  REQUIRE( a.args()[0] == "init" );
+  REQUIRE( a.args().size() == 2 );
+  REQUIRE( a.args()[1] == "." );
 }
 
