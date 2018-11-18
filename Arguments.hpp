@@ -12,8 +12,8 @@ class Arguments {
     std::map<std::string, std::string> _options;
   public:
     Arguments(int argc, char** argv);
-    std::string command() { return _command; }
-    const std::vector<std::string>& args() { return _args; }
+    std::string command() const { return _command; }
+    const std::vector<std::string>& args() const { return _args; }
 };
 
 #endif /* IDJIT__ARGUMENTS_HPP */

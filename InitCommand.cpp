@@ -13,6 +13,7 @@ InitCommand::InitCommand(const std::vector<std::string>& args) {
       break;
     case 0:
       _path = "./.idjit.db";
+      break;
     default:
       throw std::invalid_argument("too many arguments passed to 'init'");
   }

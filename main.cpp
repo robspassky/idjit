@@ -7,19 +7,11 @@ int main(int argc, char **argv) {
 
   try {
 
-    Arguments a{argc, argv};
+    Arguments arguments{argc, argv};
 
-    if (a.command() == "init") {
+    auto pcmd = Command::create(arguments);
 
-      InitCommand ic{a.args()};
-
-      ic.run();
-
-    } else {
-
-      throw std::invalid_argument("unknown command");
-
-    }
+    pcmd->run();
 
     return 0;
 
