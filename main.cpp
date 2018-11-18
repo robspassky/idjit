@@ -8,7 +8,9 @@ int main(int argc, char **argv) {
   auto result = ic.run();
   if (!result.first) {
     std::cerr << "Error: " << result.second << std::endl;
+    return -1;
   }
+
   return 0;
 }
 

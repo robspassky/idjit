@@ -1,13 +1,17 @@
 #include "catch.hpp"
 #include "../InitCommand.hpp"
 #include <sys/stat.h>
+#include <stdio.h>
 
-SCENARIO( "create a database", "[InitCommand]" ) {
+SCENARIO( "InitCommand -- create a database", "[InitCommand]" ) {
 
-  GIVEN( "In default directory" ) {
-    InitCommand cmd{};
+  InitCommand ic;
 
-    REQUIRE( cmd.run().first == true );
+  GIVEN( "not created" ) {
+    REQUIRE( ic.run().first == true );
+  }
+  GIVEN( "created" ) {
+    REQUIRE( ic.run().first == false );
   }
 
 }

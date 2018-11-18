@@ -30,7 +30,7 @@ test_objects := $(test_sources:%.cpp=%.o)
 
 test_subjects := $(test_sources:tests/test_%.cpp=%.o)
 
-test: tests/test
+test: tests/test $(test_objects)
 	./tests/test
 
 tests/test: tests/test.o $(test_objects) $(test_subjects)
