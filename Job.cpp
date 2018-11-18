@@ -2,8 +2,13 @@
 
 #include <map>
 #include <string>
+#include "sole.hpp"
 
 using namespace std;
+
+Job::Job(string name, string user) : name(name), owner(user), assignee(user) {
+  id = sole::uuid4().str();
+}
 
 Job::Job(int ncols, char** columns, char** data) {
   map<string, string> result;
