@@ -67,6 +67,8 @@ todo
 ====
 
 1. build the single-repository version, one binary version
+2. refactor Job as class to possess Db updates, so no one else need include Db.hpp
+3. add default Db constructor to open nearest existing .idjit.db in parents
 
 disclaimer
 ==========

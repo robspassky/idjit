@@ -20,12 +20,12 @@ struct Job {
   string name;
   string criteria;
   string owner;
-  int importance;
+  int importance = 0;
   string assignee;
-  int state;
-  int status;
-  int points;
-  int deadline;
+  int state = 0;
+  int status = 0;
+  int points = 0;
+  int deadline = 0;
 
   Job(int ncols, char **columns, char **data);
   Job(string shortname, string user) :
