@@ -1,13 +1,14 @@
 #include <iostream>
-#include "Arguments.hpp"
-#include "Command.hpp"
+#include "InitCommand.hpp"
 
 int main(int argc, char **argv) {
 
-  Arguments args{argc, argv};
-  Command cmd{args};
-  cmd.run(std::cin, std::cout, std::cerr);
+  InitCommand ic;
 
+  auto result = ic.run();
+  if (!result.first) {
+    std::cerr << "Error: " << result.second << std::endl;
+  }
   return 0;
 }
 

@@ -2,16 +2,13 @@
 #define IDJIT__INITCOMMAND_HPP
 
 #include <string>
-#include <sqlite3.h>
 
 class InitCommand {
   private:
-    std::string _dir;
-    sqlite3* _db;
-    char* populate();
+    std::string _path;
 
   public:
-    InitCommand(const std::string& dirname = ".") : _dir(dirname), _db(nullptr) {}
+    InitCommand(const std::string& dirname = ".") { _path = dirname + "/.idjit.db"; }
     std::pair<bool, std::string> run();
 };
 
