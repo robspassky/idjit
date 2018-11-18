@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "Arguments.hpp"
-#include "InitCommand.hpp"
+#include "Command.hpp"
 
 int main(int argc, char **argv) {
 

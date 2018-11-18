@@ -1,8 +1,6 @@
 #include "InitCommand.hpp"
 #include "Db.hpp"
-#include <iostream>
 #include <stdexcept>
-#include <unistd.h>
 
 using namespace std;
 
