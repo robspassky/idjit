@@ -1,6 +1,5 @@
 #include "Db.hpp"
 #include <stdexcept>
-#include <iostream>
 #include <unistd.h>
 
 Db::Db(std::string path, bool create) {
@@ -64,7 +63,10 @@ CREATE TABLE history (
 
   char *errmsg = nullptr;
   sqlite3_exec(_db, sql.c_str(), NULL, NULL, &errmsg);
-  if (errmsg != nullptr)
-    throw std::invalid_argument(errmsg);
+  if (errmsg != nullptr) {
+    std::string errstring(errmsg);
+    sqlite3_free(errmsg);
+    throw std::invalid_argument(errstring);
+  }
 }
 
