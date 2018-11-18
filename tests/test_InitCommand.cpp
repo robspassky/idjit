@@ -2,10 +2,13 @@
 #include "../InitCommand.hpp"
 #include <sys/stat.h>
 #include <stdio.h>
+#include <string>
+#include <vector>
 
 SCENARIO( "InitCommand -- create a database", "[InitCommand]" ) {
 
-  InitCommand ic;
+  std::vector<std::string> vs;
+  InitCommand ic{vs};
 
   GIVEN( "not created" ) {
     bool threw = false;

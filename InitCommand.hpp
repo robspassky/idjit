@@ -2,13 +2,15 @@
 #define IDJIT__INITCOMMAND_HPP
 
 #include <string>
+#include <vector>
+#include "Command.hpp"
 
-class InitCommand {
+class InitCommand : public Command {
   private:
     std::string _path;
 
   public:
-    InitCommand(const std::string& dirname = ".") { _path = dirname + "/.idjit.db"; }
+    InitCommand(const std::vector<std::string>& args);
     void run();
 };
 

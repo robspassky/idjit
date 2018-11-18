@@ -6,6 +6,18 @@
 
 using namespace std;
 
+InitCommand::InitCommand(const std::vector<std::string>& args) {
+  switch (args.size()) {
+    case 1:
+      _path = args[0] + "/.idjit.db";
+      break;
+    case 0:
+      _path = "./.idjit.db";
+    default:
+      throw std::invalid_argument("too many arguments passed to 'init'");
+  }
+}
+
 void InitCommand::run() {
   Db db(_path, true);
   db.initialize();
