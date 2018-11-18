@@ -8,10 +8,14 @@ SCENARIO( "InitCommand -- create a database", "[InitCommand]" ) {
   InitCommand ic;
 
   GIVEN( "not created" ) {
-    REQUIRE( ic.run().first == true );
+    bool threw = false;
+    try { ic.run(); } catch (std::exception e) { threw = true; }
+    REQUIRE( threw == false );
   }
   GIVEN( "created" ) {
-    REQUIRE( ic.run().first == false );
+    bool threw = false;
+    try { ic.run(); } catch (std::exception e) { threw = true; }
+    REQUIRE( threw == true );
   }
 
 }

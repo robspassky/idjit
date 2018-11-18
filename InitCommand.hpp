@@ -9,7 +9,7 @@ class InitCommand {
 
   public:
     InitCommand(const std::string& dirname = ".") { _path = dirname + "/.idjit.db"; }
-    std::pair<bool, std::string> run();
+    void run();
 };
 
 #endif /* IDJIT__INITCOMMAND_HPP */
