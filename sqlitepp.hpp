@@ -1,14 +1,27 @@
 #ifndef __SQLITEPP_HPP
 #define __SQLITEPP_HPP
 
+#include <map>
 #include <string>
 #include <exception>
+#include <iostream>
 #include "sqlite3.h"
-
 
 using namespace std;
 
 namespace sqlite {
+
+  class stmt {
+    private:
+      string _sql;
+
+    public:
+      stmt(string sql) : _sql(sql) {}
+
+      string sql() { return _sql; }
+      virtual void process(map<string, string>& row) { }
+      virtual ~stmt() {}
+  };
 
   class sqlite_error : public exception {
     private:
@@ -28,7 +41,6 @@ namespace sqlite {
   };
 
   class db {
-
     private:
       sqlite3* _pdb = nullptr;
 
@@ -54,6 +66,36 @@ namespace sqlite {
 
       virtual ~db() {
         (void) sqlite3_close_v2(_pdb);
+      }
+
+      void execute(string sql) {
+        stmt st{sql};
+        execute(&st);
+      }
+
+      void execute(stmt* st) {
+        char *errmsg = nullptr;
+        int err = sqlite3_exec(_pdb, st->sql().c_str(), db::exec_callback, st, &errmsg);
+
+        if (err != SQLITE_OK)
+          throw sqlite_error(err);
+
+        if (errmsg != nullptr)
+          throw sqlite_error(errmsg);
+      }
+
+      static int exec_callback(void *context, int ncols, char **data, char **columns) {
+        map<string, string> row;
+        for (int i=0; i<ncols; i++)
+          row.insert(make_pair<string, string>(columns[i], data[i]));
+
+        try {
+          auto pstmt = reinterpret_cast<stmt*>(context);
+          pstmt->process(row);
+        } catch (const exception& e) {
+          return -1;
+        }
+        return 0;
       }
 
   };
