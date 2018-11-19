@@ -5,20 +5,24 @@
 
 using namespace std;
 
-struct Job {
-  string id = "";
-  string name = "";
-  string criteria = "";
-  string owner = "";
-  int importance = 0;
-  string assignee = "";
-  int state = 0;
-  int status = 0;
-  int points = 0;
-  int deadline = 0;
+class Job {
+  public:
+    Job(int ncols, char **columns, char **data);
+    Job(string shortname, string user);
+    void save();
 
-  Job(int ncols, char **columns, char **data);
-  Job(string shortname, string user);
+  private:
+    string _id = "";
+    string _name = "";
+    string _criteria = "";
+    string _owner = "";
+    int _importance = 0;
+    string _assignee = "";
+    int _state = 0;
+    int _status = 0;
+    int _points = 0;
+    int _deadline = 0;
+
 };
 
 #endif /* IDJIT__JOB_HPP */
