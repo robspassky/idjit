@@ -90,6 +90,18 @@ std::vector<Job> Db::list_jobs() {
   return results;
 }
 
+void Db::execute(std::string sql) {
+  char *errmsg = nullptr;
+  sqlite3_exec(_db, sql.c_str(), NULL, NULL, &errmsg);
+  if (errmsg != nullptr) {
+    std::string errstring(errmsg);
+    sqlite3_free(errmsg);
+    throw std::invalid_argument(errstring);
+  }
+  return;
+}
+
+/*
 void Db::upsert_job(Job job) {
   std::stringstream ss;
   ss << R"(
@@ -118,3 +130,4 @@ void Db::upsert_job(Job job) {
   return;
 
 }
+*/

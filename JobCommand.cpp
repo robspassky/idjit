@@ -1,5 +1,5 @@
 #include "JobCommand.hpp"
-#include "Db.hpp"
+#include "Job.hpp"
 #include <stdexcept>
 
 using namespace std;
@@ -16,7 +16,6 @@ JobCommand::JobCommand(const std::vector<std::string>& args) {
 
 void JobCommand::run() {
   Job job{_name, "anonymous"};
-  Db db(".idjit.db", false);
-  db.upsert_job(job);
+  job.save();
 }
 

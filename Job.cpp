@@ -1,4 +1,5 @@
 #include "Job.hpp"
+#include "Db.hpp"
 
 #include <map>
 #include <string>
@@ -35,16 +36,16 @@ void Job::save() {
   )";
 
   ss << "  VALUES( ";
-  ss << "'" << job.id << "', ";
-  ss << "'" << job.name << "', ";
-  ss << "'" << job.criteria << "', ";
-  ss << "'" << job.owner << "', ";
-  ss << job.importance << ", ";
-  ss << "'" << job.assignee << "', ";
-  ss << job.state << ", ";
-  ss << job.status << ", ";
-  ss << job.points << ", ";
-  ss << job.deadline << ") ";
+  ss << "'" << _id << "', ";
+  ss << "'" << _name << "', ";
+  ss << "'" << _criteria << "', ";
+  ss << "'" << _owner << "', ";
+  ss << _importance << ", ";
+  ss << "'" << _assignee << "', ";
+  ss << _state << ", ";
+  ss << _status << ", ";
+  ss << _points << ", ";
+  ss << _deadline << ") ";
 
   Db db;
   db.execute(ss.str());

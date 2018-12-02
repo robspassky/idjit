@@ -11,10 +11,10 @@ class Db {
     sqlite3* _db = nullptr;
 
   public:
-    Db(std::string path, bool create_flag);
+    Db(std::string path = ".idjit.db", bool create_flag = false);
     void initialize();
     std::vector<Job> list_jobs();
-    void upsert_job(Job job);
+    void execute(std::string sql);
 };
 
 #endif /* IDJIT__DB_HPP */
