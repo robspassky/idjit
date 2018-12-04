@@ -1,7 +1,7 @@
 #ifndef IDJIT__COMMAND_HPP
 #define IDJIT__COMMAND_HPP
 
-#include "Arguments.hpp"
+#include "arguments.h"
 #include <memory>
 
 class Command {

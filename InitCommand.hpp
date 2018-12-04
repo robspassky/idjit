@@ -3,7 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "Command.hpp"
+
+#include "command.h"
 
 class InitCommand : public Command {
   private:

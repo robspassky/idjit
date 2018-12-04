@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "Command.hpp"
+#include "command.h"
 
 class JobCommand : public Command {
   private:
