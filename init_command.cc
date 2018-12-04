@@ -1,5 +1,6 @@
-#include "InitCommand.hpp"
-#include "Db.hpp"
+#include "init_command.h"
+
+#include "db.h"
 #include <stdexcept>
 
 using namespace std;

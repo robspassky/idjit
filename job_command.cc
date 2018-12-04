@@ -1,6 +1,7 @@
-#include "JobCommand.hpp"
-#include "Job.hpp"
+#include "job_command.h"
+
 #include <stdexcept>
+#include "job.h"
 
 using namespace std;
 

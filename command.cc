@@ -1,9 +1,8 @@
 #include "command.h"
 
 #include <stdexcept>
-
-#include "JobCommand.hpp"
-#include "InitCommand.hpp"
+#include "job_command.h"
+#include "init_command.h"
 
 std::unique_ptr<Command> Command::create(const Arguments& args) {
 

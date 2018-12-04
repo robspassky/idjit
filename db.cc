@@ -1,4 +1,5 @@
-#include "Db.hpp"
+#include "db.h"
+
 #include <stdexcept>
 #include <unistd.h>
 #include <sstream>
@@ -71,6 +72,7 @@ CREATE TABLE history (
   }
 }
 
+/*
 int cb_list_jobs(void* context, int ncols, char** data, char** columns) {
   std::vector<Job>* presults = (std::vector<Job>*) context;
   presults->push_back(Job{ncols, columns, data});
@@ -89,6 +91,7 @@ std::vector<Job> Db::list_jobs() {
   }
   return results;
 }
+*/
 
 void Db::execute(std::string sql) {
   char *errmsg = nullptr;

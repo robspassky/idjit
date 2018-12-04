@@ -1,5 +1,5 @@
-#ifndef IDJIT__JOBCOMMAND_HPP
-#define IDJIT__JOBCOMMAND_HPP
+#ifndef IDJIT_JOB_COMMAND_H_
+#define IDJIT_JOB_COMMAND_H_
 
 #include <string>
 #include <vector>
@@ -14,4 +14,4 @@ class JobCommand : public Command {
     void run();
 };
 
-#endif /* IDJIT__JOBCOMMAND_HPP */
+#endif /* IDJIT_JOB_COMMAND_H_ */

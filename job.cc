@@ -1,9 +1,9 @@
-#include "Job.hpp"
-#include "Db.hpp"
+#include "job.h"
 
 #include <map>
 #include <string>
-#include "sole.hpp"
+#include "db.h"
+#include "sole.h"
 
 using namespace std;
 
