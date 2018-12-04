@@ -1,6 +1,7 @@
 #include "arguments.h"
-
 #include "gtest/gtest.h"
+
+#include <stdexcept>
 
 namespace {
 
@@ -44,6 +45,11 @@ TEST_F(ArgumentsTest, EmptyOption) {
   const char *argv[]{ "idjit", "test", "-" };
   auto args = idjit::parse_commandline(3, argv);
   EXPECT_EQ(args.options["-"], "true");
+}
+
+TEST_F(ArgumentsTest, NoCommand) {
+  const char *argv[]{ "idjit" };
+  ASSERT_THROW(idjit::parse_commandline(1, argv), std::invalid_argument);
 }
 
 };  // namespace
