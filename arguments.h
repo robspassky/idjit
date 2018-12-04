@@ -1,6 +1,7 @@
 #ifndef IDJIT_ARGUMENTS_H_
 #define IDJIT_ARGUMENTS_H_
 
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
@@ -19,6 +20,8 @@ struct Arguments {
 const Arguments parse_commandline(int argc, const char *argv[]);
 
 };  // namespace idjit
+
+std::ostream& operator<<(std::ostream& os, const idjit::Arguments& args);
 
 #endif  // IDJIT_ARGUMENTS_H_
 
