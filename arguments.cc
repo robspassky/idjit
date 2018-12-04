@@ -1,30 +1,41 @@
 #include "arguments.h"
 
 #include <stdexcept>
-#include "absl/strings/str_split.h"
 
+namespace {
 
-Arguments::Arguments(int argc, char **argv) {
+std::pair<std::string, std::string> parse_option(const char *string) {
+  std::string key = string;
+  auto pos = key.find_first_of('=');
+  if (pos == std::string::npos)
+    return { key, "true" };
+  else
+    return { key.substr(0, pos), key.substr(pos+1) };
+}
+
+};  // namespace
+
+namespace idjit {
+
+const Arguments parse_commandline(int argc, const char *argv[]) {
   if (argc < 2)
     throw std::invalid_argument("no command specified");
-  command_ = argv[1];
+
+  Arguments a = { argv[1], {}, {} };
   for (int i=2; i<argc; i++) {
     if (argv[i][0] != '-')
-      args_.push_back(argv[i]);
-    else
-      handle_option(argv[i]+1);
+      a.args.push_back(argv[i]);
+    else {
+      auto p = parse_option(argv[i]+1);
+      if (p.first == "")
+        a.options["-"] = p.second;
+      else
+        a.options[p.first] = p.second;
+    }
   }
+
+  return a;
 }
 
-bool Arguments::has(const char *name) {
-  return options_.find(name) != options_.end();
-}
-
-void Arguments::handle_option(const char *option) {
-  std::vector<std::string> v = absl::StrSplit(option, absl::MaxSplits('=', 2));
-  if (v.size() > 1)
-    options_[v[0]] = v[1];
-  else
-    options_[v[0]] = "true";
-}
+};  // namespace idjit
 

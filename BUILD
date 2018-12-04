@@ -1,12 +1,43 @@
 CFLAGS = ["-O3", "-std=c++17", "-Wall", "-Wextra"]
+LDFLAGS = []
 
 cc_binary(
     name = "idjit", 
-    srcs = ["main.cc"],
-    deps = ["arguments", "command"],
-    linkopts = ["-lsqlite3"],
+    srcs = [
+      "main.cc"
+    ],
+    deps = [
+      "arguments"
+    ],
+    linkopts = LDFLAGS,
     copts = CFLAGS
 )
+
+cc_library(
+    name = "arguments",
+    srcs = [
+      "arguments.cc", 
+      "arguments.h"
+    ],
+    copts = CFLAGS
+)
+
+cc_test(
+    name = "test_arguments",
+    srcs = [ 
+      "test/test_arguments.cc", 
+      "arguments.cc", 
+      "arguments.h" 
+    ],
+    deps = [ 
+      "@googletest//:gtest" 
+    ],
+    copts = CFLAGS
+)
+
+
+
+
 
 cc_library(
     name = "command",
@@ -40,18 +71,5 @@ cc_library(
     name = "db",
     srcs = ["db.cc", "db.h"],
     copts = CFLAGS
-)
-
-cc_library(
-    name = "arguments",
-    srcs = ["arguments.cc", "arguments.h"],
-    deps = [ "@abseil_cpp//absl/strings" ],
-    copts = CFLAGS
-)
-
-cc_test(
-    name = "arguments_test",
-    srcs = [ "arguments_test.cc", "arguments.cc", "arguments.h" ],
-    deps = [ "@abseil_cpp//absl/strings:strings", "@googletest//:gtest" ],
 )
 

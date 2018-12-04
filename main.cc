@@ -1,18 +1,13 @@
 #include <iostream>
-#include <memory>
-#include <stdexcept>
-
 #include "arguments.h"
-#include "command.h"
 
-int main(int argc, char **argv) {
+int main(int argc, const char *argv[]) {
   try {
-    Arguments arguments{argc, argv};
-    std::unique_ptr<Command> pcmd = Command::create(arguments);
-    pcmd->run();
+    auto args = idjit::parse_commandline(argc, argv);
+    std::cout << args << std::endl;
     return 0;
   } catch (const std::exception& e) {
-    std::cerr << "idjit failed - " << e.what() << std::endl;
+    std::cerr << "idjit: " << e.what() << std::endl;
     return -1;
   }
 }
