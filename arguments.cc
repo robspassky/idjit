@@ -40,13 +40,16 @@ const Arguments parse_commandline(int argc, const char *argv[]) {
 };  // namespace idjit
 
 std::ostream& operator<<(std::ostream& os, const idjit::Arguments& args) {
-  os << "Command: " << args.command << std::endl;
-  os << "Args: " << std::endl;
+  os << "(Arguments) " << args.command;
+  os << " [";
   for (auto a : args.args)
-    os << "  " << a << std::endl;
-  os << "Options: " << std::endl;
+    os << a << ",";
+  os << "]";
+  os << " {";
   for (auto opt : args.options)
-    os << "  " << opt.first << " = " << opt.second << std::endl;
+    os << opt.first << "=" << opt.second << ",";
+  os << "}";
+  os << std::endl;
   return os;
 }
 
