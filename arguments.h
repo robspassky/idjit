@@ -9,9 +9,17 @@
 namespace idjit {
 
 struct Arguments {
-  std::string command;
-  std::vector<std::string> args;
-  std::map<std::string, std::string> options;
+  std::string command = "";
+  std::vector<std::string> args = {};
+  std::map<std::string, std::string> options = {};
+
+  bool operator==(const Arguments& other) const {
+    return 
+      command == other.command &&
+      args == other.args &&
+      options == other.options;
+  }
+
 };
 
 // Command-line parser, takes args from main(), expecting something like:
