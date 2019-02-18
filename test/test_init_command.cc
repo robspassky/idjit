@@ -1,14 +1,16 @@
-#include "arguments.h"
+#include "init_command.h"
 #include "gtest/gtest.h"
 
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 namespace {
 
-class ArgumentsTest : public ::testing::Test {
+class CustomerTests : public ::testing::Test {
  protected:
-  ArgumentsTest() { /* setup */ }
-  ~ArgumentsTest() override { /* teardown */ }
+  CustomerTests() { /* setup */ }
+  ~CustomerTests() override { /* teardown */ }
   void SetUp() override { /* more setup */ }
   void TearDown() override { /* more teardown */ }
 
@@ -23,9 +25,8 @@ class ArgumentsTest : public ::testing::Test {
   idjit::Arguments ut_com3_  = { "test", {}, {{ "-", "true" }} };
 };
 
-TEST_F(ArgumentsTest, CTInit) {
-  const char *argv[] = { "idjit", "init" };
-  auto args = idjit::parse_commandline(2, argv);
+TEST_F(CustomerTests, DefaultPath) {
+  idjit::do_init({});
   EXPECT_EQ(args, ct_init_);
 }
 

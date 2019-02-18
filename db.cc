@@ -1,23 +1,37 @@
 #include "db.h"
 
+#include <iostream>
 #include <stdexcept>
 #include <unistd.h>
-#include <sstream>
 
-Db::Db(std::string path, bool create) {
-  if (create && (access(path.c_str(), F_OK) != -1))
-    throw std::invalid_argument("idjit already initialized");
+const char *DEFAULT_DB_NAME = ".idjit.db";
 
-  if (!create && access(path.c_str(), F_OK) == -1)
-    throw std::invalid_argument("idjit not yet initialized");
+Db::Db(const char *path, bool create) {
+  if (*path == '\0')
+    path = DEFAULT_DB_NAME;
 
-  int err = sqlite3_open(path.c_str(), &_db);
-  if (err != SQLITE_OK)
-    throw std::invalid_argument(sqlite3_errstr(err));
+  std::cerr << "path is " << path << std::endl;
+  std::cerr << "access is " << access(path, F_OK) << std::endl;
+
+  if (create && (access(path, F_OK) != -1))
+    throw std::invalid_argument("already initialized");
+
+  if (!create && access(path, F_OK) == -1)
+    throw std::invalid_argument("not initialized");
+
+  if (create) {
+    int err = sqlite3_open_v2(path, &db_, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    if (err != SQLITE_OK)
+      throw std::logic_error(sqlite3_errstr(err));
+  } else {
+    int err = sqlite3_open_v2(path, &db_, SQLITE_OPEN_READWRITE, NULL);
+    if (err != SQLITE_OK)
+      throw std::logic_error(sqlite3_errstr(err));
+  }
 }
 
 void Db::initialize() {
-  std::string sql = R"(
+  const char *sql = R"(
 CREATE TABLE 'jobs' (
   'id'         TEXT,
   'name'       TEXT,
@@ -63,74 +77,13 @@ CREATE TABLE history (
 );
 )";
 
+  execute(sql);
+}
+
+void Db::execute(const char *sql) {
   char *errmsg = nullptr;
-  sqlite3_exec(_db, sql.c_str(), NULL, NULL, &errmsg);
-  if (errmsg != nullptr) {
-    std::string errstring(errmsg);
-    sqlite3_free(errmsg);
-    throw std::invalid_argument(errstring);
-  }
+  sqlite3_exec(db_, sql, NULL, NULL, &errmsg);
+  if (errmsg != nullptr)
+    throw std::invalid_argument(errmsg);
 }
 
-/*
-int cb_list_jobs(void* context, int ncols, char** data, char** columns) {
-  std::vector<Job>* presults = (std::vector<Job>*) context;
-  presults->push_back(Job{ncols, columns, data});
-  return 0;
-}
-
-std::vector<Job> Db::list_jobs() {
-  std::string sql = R"(SELECT * FROM jobs;)";
-  char *errmsg = nullptr;
-  std::vector<Job> results;
-  sqlite3_exec(_db, sql.c_str(), cb_list_jobs, &results, &errmsg);
-  if (errmsg != nullptr) {
-    std::string errstring(errmsg);
-    sqlite3_free(errmsg);
-    throw std::invalid_argument(errstring);
-  }
-  return results;
-}
-*/
-
-void Db::execute(std::string sql) {
-  char *errmsg = nullptr;
-  sqlite3_exec(_db, sql.c_str(), NULL, NULL, &errmsg);
-  if (errmsg != nullptr) {
-    std::string errstring(errmsg);
-    sqlite3_free(errmsg);
-    throw std::invalid_argument(errstring);
-  }
-  return;
-}
-
-/*
-void Db::upsert_job(Job job) {
-  std::stringstream ss;
-  ss << R"(
-  INSERT OR REPLACE INTO jobs('id', 'name', 'criteria', 'owner', 'importance', 'assignee', 'state', 'status', 'points', 'deadline')
-  )";
-
-  ss << "  VALUES( ";
-  ss << "'" << job.id << "', ";
-  ss << "'" << job.name << "', ";
-  ss << "'" << job.criteria << "', ";
-  ss << "'" << job.owner << "', ";
-  ss << job.importance << ", ";
-  ss << "'" << job.assignee << "', ";
-  ss << job.state << ", ";
-  ss << job.status << ", ";
-  ss << job.points << ", ";
-  ss << job.deadline << ") ";
-
-  char *errmsg = nullptr;
-  sqlite3_exec(_db, ss.str().c_str(), NULL, NULL, &errmsg);
-  if (errmsg != nullptr) {
-    std::string errstring(errmsg);
-    sqlite3_free(errmsg);
-    throw std::invalid_argument(errstring);
-  }
-  return;
-
-}
-*/

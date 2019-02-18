@@ -21,11 +21,14 @@ const Arguments parse_commandline(int argc, const char *argv[]) {
   if (argc < 2)
     throw std::invalid_argument("no command specified");
 
-  Arguments a = { argv[1], {}, {} };
-  for (int i=2; i<argc; i++) {
-    if (argv[i][0] != '-')
-      a.args.push_back(argv[i]);
-    else {
+  Arguments a = { {}, {}, {} };
+  for (int i=1; i<argc; i++) {
+    if (argv[i][0] != '-') {
+      if (a.command == "")
+        a.command = argv[i];
+      else
+        a.args.push_back(argv[i]);
+    } else {
       auto p = parse_option(argv[i]+1);
       if (p.first == "")
         a.options["-"] = p.second;

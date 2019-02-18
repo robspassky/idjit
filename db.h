@@ -1,18 +1,17 @@
-#ifndef IDJIT__DB_HPP
-#define IDJIT__DB_HPP
+#ifndef IDJIT_DB_H_
+#define IDJIT_DB_H_
 
-#include <string>
-#include <vector>
 #include <sqlite3.h>
 
 class Db {
-  private:
-    sqlite3* _db = nullptr;
-
   public:
-    Db(std::string path = ".idjit.db", bool create_flag = false);
+    Db(const char *path, bool create_flag = false);
     void initialize();
-    void execute(std::string sql);
+
+  private:
+    void execute(const char *sql);
+
+    sqlite3 *db_ = nullptr;
 };
 
-#endif /* IDJIT__DB_HPP */
+#endif  /* IDJIT_DB_H_ */
