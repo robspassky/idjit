@@ -21,50 +21,36 @@
 package cmd
 
 import (
-	"fmt"
-  //"os"
-
-  "database/sql"
-  _ "github.com/mattn/go-sqlite3"
-  "log"
-
+  "github.com/robspassky/idjit/db"
 	"github.com/spf13/cobra"
+  "log"
 )
+
+var userCreateFlag bool
 
 // userCmd represents the user command
 var userCmd = &cobra.Command{
 	Use:   "user",
-	Short: "Create a new user",
-	Long: `Create a new user. For example:
+  Args:  cobra.ExactArgs(1),
+	Short: "Set the default user",
+	Long:  `Set the default user. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+  idjit user robc
+  idjit user robc -c  # create if does not exist`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("user called")
-    var target = findIdjit()
-    log.Fatal(target)
-    _, err := sql.Open("sqlite3", fmt.Sprintf("%s/.idjit.db", target))
-    if err != nil {
-      log.Fatal(err)
+    username := args[0]
+    exists := db.FindUser(username)
+    if exists == false {
+      if userCreateFlag == false {
+        log.Fatalf("user %s not found\n", username)
+      }
+      db.CreateUser(username)
     }
+    db.SetDefaultUser(username)
 	},
-}
-
-func findIdjit() string {
-  return "/tmp"
 }
 
 func init() {
 	rootCmd.AddCommand(userCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// userCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// userCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+  userCmd.Flags().BoolVarP(&userCreateFlag, "create", "c", false, "Create user if it does not exist")
 }

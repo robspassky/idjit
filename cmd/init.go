@@ -21,11 +21,8 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/robspassky/idjit/db"
-  "log"
-  "os"
 )
 
 // initCmd represents the init command
@@ -39,11 +36,7 @@ var initCmd = &cobra.Command{
     if len(args) > 0 {
       dir = args[0]
     }
-    dbname := fmt.Sprintf("%s/.idjit.db", dir)
-    if _, err := os.Open(dbname); err == nil {
-      log.Fatal("idjit already initialized")
-    }
-    db.Create(dbname)
+    db.Create(dir)
   },
 }
 

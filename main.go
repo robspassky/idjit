@@ -15,9 +15,11 @@
 package main
 
 import "github.com/robspassky/idjit/cmd"
+import "github.com/robspassky/idjit/db"
 import "log"
 
 func main() {
-  log.Print("aaa")
+  log.Print("aab")
 	cmd.Execute()
+  defer db.Close()
 }
