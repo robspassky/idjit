@@ -38,4 +38,7 @@ func SetDefaultUser(name string) {
   SetConfig("defaultUser", name)
 }
 
+func GetDefaultUser() string {
+  return GetConfig("defaultUser")
+}
 

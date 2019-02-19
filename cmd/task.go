@@ -21,24 +21,42 @@
 package cmd
 
 import (
-	"fmt"
-
+  "fmt"
+	"github.com/robspassky/idjit/db"
 	"github.com/spf13/cobra"
 )
 
 // taskCmd represents the task command
 var taskCmd = &cobra.Command{
 	Use:   "task",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Create a new task",
+	Long: `Create a new task assigned to the current user and owned by the current team.
+  For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+  idjit task 'Add "task" command'
+  idjit task
+  `,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("task called")
+    if len(args) == 0 {
+      tasks := db.ListTasks()
+      printTasks(tasks)
+      return
+    }
+    name := args[0]
+    db.AddTask(name)
 	},
+}
+
+func printTasks(tasks []db.Task) {
+  fmt.Printf("                 Id                                 Name\n")
+  fmt.Printf("------------------------------------  ------------------------------\n")
+  for _, t := range tasks {
+    printTask(t)
+  }
+}
+
+func printTask(t db.Task) {
+  fmt.Printf("%s  %-30s\n", t.Id, t.Name)
 }
 
 func init() {
