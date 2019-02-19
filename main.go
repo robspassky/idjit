@@ -15,7 +15,9 @@
 package main
 
 import "github.com/robspassky/idjit/cmd"
+import "log"
 
 func main() {
+  log.Print("aaa")
 	cmd.Execute()
 }
