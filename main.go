@@ -36,8 +36,7 @@ var cmdRoot = &cobra.Command{
 	Short: "a stupid dependency tracker",
 	Long: `idjit is a stupid dependency tracker. It is a fast, decentralized
 version of JIRA. It allows users to make local updates to their
-task statuses and then push their updates to a central location.
-`,
+task statuses and then push their updates to a central location.`,
 	//  Run: func(cmd *cobra.Command, args []string) { },
 }
 
