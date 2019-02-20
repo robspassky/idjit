@@ -68,6 +68,11 @@ const (
   );
   CREATE INDEX task_assignee ON tasks (assignee, id);
   CREATE INDEX task_owner ON tasks (owner, id);
+  CREATE TABLE deps (
+    parent TEXT,
+    child TEXT,
+    PRIMARY KEY (parent, child)
+  );
   CREATE TABLE users (
     id TEXT,
     name TEXT,
@@ -81,6 +86,8 @@ const (
   );`
 
 	sqlTaskAdd = "INSERT INTO tasks (id, name, assignee) VALUES (?, ?, ?);"
+
+	sqlTaskUndepAll = "DELETE FROM deps WHERE parent = ?;"
 
 	sqlTaskList = `
   SELECT 
@@ -205,6 +212,53 @@ func dbTaskList() []Task {
 		tasks = append(tasks, t)
 	}
 	return tasks
+}
+
+func dbTaskDep(parent string, children []string) {
+  sqlStmt := "INSERT INTO deps VALUES";
+  for i := range children {
+    if i > 0 {
+      sqlStmt += ","
+    }
+    sqlStmt += fmt.Sprintf(" (?, ?)")
+  }
+  sqlStmt += ";"
+  args := make([]interface{}, len(children)*2)
+  for i, child := range children {
+    args[i*2] = parent
+    args[(i*2)+1] = child
+  }
+  db := findopen()
+  if _, err := db.Exec(sqlStmt, args...); err != nil {
+    log.Fatal(err)
+  }
+}
+
+func dbTaskUndep(parent string, children []string) {
+  sqlStmt := "DELETE FROM deps WHERE parent = ? AND child IN ("
+  for i := range children {
+    if i > 0 {
+      sqlStmt += ", "
+    }
+    sqlStmt += "?"
+  }
+  sqlStmt += ");"
+  args := make([]interface{}, len(children)+1)
+  args[0] = parent
+  for i, child := range children {
+    args[i+1] = child
+  }
+  db := findopen()
+  if _, err := db.Exec(sqlStmt, args...); err != nil {
+    log.Fatal(err)
+  }
+}
+
+func dbTaskUndepAll(parent string) {
+  db := findopen()
+  if _, err := db.Exec(sqlTaskUndepAll, parent); err != nil {
+    log.Fatal(err)
+  }
 }
 
 // internal functions

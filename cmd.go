@@ -58,15 +58,38 @@ idjit task`,
 idjit user robc     # make 'robc' current user, error if it doesn't exist
 idjit user robc -n  # create if does not exist`,
 	}
+
+  cmdTaskDep = &cobra.Command{
+    Use: "dep",
+    Run: runTaskDep,
+    Args: cobra.MinimumNArgs(2),
+    Short: "Add a dependency between tasks",
+    Long: `Add a dependency between tasks.
+idjit task dep aaa 111 222 333`,
+  }
+
+  cmdTaskUndep = &cobra.Command{
+    Use: "undep taskid",
+    Run: runTaskUndep,
+    Args: cobra.MinimumNArgs(1),
+    Short: "Remove a dependency between tasks",
+    Long: `Remove a dependency between tasks.
+idjit task undep aaa -a            # remove all dependencies
+idjit task undep aaa 111 222 333   # remove 3 dependencies`,
+  }
 )
 
 var flgUserCreate bool
+var flgTaskUndepAll bool
 
 func init() {
 	cmdRoot.AddCommand(cmdInit)
 	cmdRoot.AddCommand(cmdTask)
 	cmdRoot.AddCommand(cmdUser)
+	cmdTask.AddCommand(cmdTaskDep)
+	cmdTask.AddCommand(cmdTaskUndep)
 	cmdUser.Flags().BoolVarP(&flgUserCreate, "new", "n", false, "Create new user if it does not exist")
+  cmdTaskUndep.Flags().BoolVarP(&flgTaskUndepAll, "all", "a", false, "Remove all dependencies")
 }
 
 func runInit(cmd *cobra.Command, args []string) {
@@ -92,6 +115,18 @@ func runTask(cmd *cobra.Command, args []string) {
 	}
 	name := args[0]
 	dbTaskAdd(name)
+}
+
+func runTaskDep(cmd *cobra.Command, args []string) {
+  dbTaskDep(args[0], args[1:])
+}
+
+func runTaskUndep(cmd *cobra.Command, args []string) {
+  if len(args) > 1 {
+    dbTaskUndep(args[0], args[1:])
+  } else {
+    dbTaskUndepAll(args[0])
+  }
 }
 
 func runUser(cmd *cobra.Command, args []string) {
