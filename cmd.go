@@ -60,6 +60,15 @@ idjit user robc     # make 'robc' current user, error if it doesn't exist
 idjit user robc -n  # create if does not exist`,
 	}
 
+  cmdServe = &cobra.Command{
+    Use: "serve",
+    Run: runServe,
+    Args: cobra.MaximumNArgs(1),
+    Short: "Start server (foreground) with optional port",
+    Long: `Start web server.
+idjit serve 8888     # start server on port 8888`,
+  }
+
   cmdTaskEta = &cobra.Command{
     Use: "eta",
     Run: runTaskEta,
@@ -93,11 +102,12 @@ var flgTaskUndepAll bool
 
 func init() {
 	cmdRoot.AddCommand(cmdInit)
+	cmdRoot.AddCommand(cmdServe)
 	cmdRoot.AddCommand(cmdTask)
-	cmdRoot.AddCommand(cmdUser)
 	cmdTask.AddCommand(cmdTaskDep)
 	cmdTask.AddCommand(cmdTaskEta)
 	cmdTask.AddCommand(cmdTaskUndep)
+	cmdRoot.AddCommand(cmdUser)
 	cmdUser.Flags().BoolVarP(&flgUserCreate, "new", "n", false, "Create new user if it does not exist")
   cmdTaskUndep.Flags().BoolVarP(&flgTaskUndepAll, "all", "a", false, "Remove all dependencies")
 }
@@ -111,6 +121,19 @@ func runInit(cmd *cobra.Command, args []string) {
 		log.Fatalf("idjit already initialized in %s", dir)
 	}
 	dbInitialize(dir)
+}
+
+// TODO: extract dir from flags
+func runServe(cmd *cobra.Command, args []string) {
+  var dir = "."
+  if len(args) > 0 {
+    if port, err := strconv.Atoi(args[0]); err == nil {
+      startServer(port, dir)
+      return
+    }
+    abort("invalid server port provided", nil)
+  }
+  startServer(8080, dir)
 }
 
 func runTaskAdd(cmd *cobra.Command, args []string) {

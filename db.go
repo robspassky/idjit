@@ -96,6 +96,19 @@ const (
 
 	sqlTaskUndepAll = "DELETE FROM deps WHERE parent = ?;"
 
+	sqlTaskListAll = `
+  SELECT 
+    id,
+    name,
+    owner,
+    assignee,
+    eta,
+    est,
+    progress,
+    priority,
+    ordering
+  FROM tasks;`
+
 	sqlTaskList = `
   SELECT 
     id,
@@ -107,7 +120,9 @@ const (
     progress,
     priority,
     ordering
-  FROM tasks WHERE assignee = ?`
+  FROM tasks WHERE assignee = ?;`
+
+	sqlUserList = "SELECT * FROM users;"
 
 	sqlUserFind = "SELECT * FROM users WHERE name = ?;"
 
@@ -206,35 +221,26 @@ func dbTaskList() []Task {
 		log.Fatal(err)
 	}
 	defer rows.Close()
-	tasks := make([]Task, 0)
-	for rows.Next() {
-		var t Task
-		if err := rows.Scan(
-			&t.Id,
-			&t.Name,
-			&t.Owner,
-			&t.Assignee,
-			&t.Eta,
-			&t.Est,
-			&t.Progress,
-			&t.Priority,
-			&t.Ordering,
-		); err != nil {
-			log.Fatal(err)
-		}
-    if t.Eta == t.Est {
-      t.Status = "READY"
-    } else if t.Eta == 0 {
-      t.Status = "DONE"
-    } else {
-      t.Status = "WORK"
-    }
-		tasks = append(tasks, t)
-	}
-	return tasks
+	return poptasks(rows)
 }
 
+func dbTaskListAll() []Task {
+	db := findopen()
+	rows, err := db.Query(sqlTaskListAll)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	return poptasks(rows)
+}
+
+
 func dbTaskDep(parent string, children []string) {
+  parentid := onetask(parent)
+  for i, child := range children {
+    id := onetask(child)
+    children[i] = id
+  }
   sqlStmt := "INSERT INTO deps VALUES";
   for i := range children {
     if i > 0 {
@@ -245,7 +251,7 @@ func dbTaskDep(parent string, children []string) {
   sqlStmt += ";"
   args := make([]interface{}, len(children)*2)
   for i, child := range children {
-    args[i*2] = parent
+    args[i*2] = parentid
     args[(i*2)+1] = child
   }
   db := findopen()
@@ -283,6 +289,7 @@ func dbTaskFind(id string) []string {
 }
 
 func dbTaskUndep(parent string, children []string) {
+  parentid := onetask(parent)
   sqlStmt := "DELETE FROM deps WHERE parent = ? AND child IN ("
   for i := range children {
     if i > 0 {
@@ -292,9 +299,9 @@ func dbTaskUndep(parent string, children []string) {
   }
   sqlStmt += ");"
   args := make([]interface{}, len(children)+1)
-  args[0] = parent
+  args[0] = parentid
   for i, child := range children {
-    args[i+1] = child
+    args[i+1] = onetask(child)
   }
   db := findopen()
   if _, err := db.Exec(sqlStmt, args...); err != nil {
@@ -304,7 +311,8 @@ func dbTaskUndep(parent string, children []string) {
 
 func dbTaskUndepAll(parent string) {
   db := findopen()
-  if _, err := db.Exec(sqlTaskUndepAll, parent); err != nil {
+  parentid := onetask(parent)
+  if _, err := db.Exec(sqlTaskUndepAll, parentid); err != nil {
     log.Fatal(err)
   }
 }
@@ -359,5 +367,36 @@ func onetask(s string) string {
     log.Fatalf("please try again")
   }
   return ids[0]
+}
+
+// TODO: create popusers and dbUserList command for web
+
+func poptasks(rows *sql.Rows) []Task {
+	tasks := make([]Task, 0)
+	for rows.Next() {
+		var t Task
+		if err := rows.Scan(
+			&t.Id,
+			&t.Name,
+			&t.Owner,
+			&t.Assignee,
+			&t.Eta,
+			&t.Est,
+			&t.Progress,
+			&t.Priority,
+			&t.Ordering,
+		); err != nil {
+			log.Fatal(err)
+		}
+    if t.Eta == t.Est {
+      t.Status = "READY"
+    } else if t.Eta == 0 {
+      t.Status = "DONE"
+    } else {
+      t.Status = "WORK"
+    }
+		tasks = append(tasks, t)
+	}
+  return tasks
 }
 
