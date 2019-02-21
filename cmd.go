@@ -23,6 +23,7 @@ package main
 import (
 	"fmt"
 	"log"
+  "strconv"
 
 	"github.com/spf13/cobra"
 )
@@ -39,7 +40,7 @@ in the given directory (current directory if none provided).`,
 
 	cmdTask = &cobra.Command{
 		Use:   "task",
-		Run:   runTask,
+		Run:   runTaskAdd,
 		Short: "Create a new task",
 		Long: `Create a new task assigned to the current user and owned by the current team.
 For example:
@@ -58,6 +59,14 @@ idjit task`,
 idjit user robc     # make 'robc' current user, error if it doesn't exist
 idjit user robc -n  # create if does not exist`,
 	}
+
+  cmdTaskEta = &cobra.Command{
+    Use: "eta",
+    Run: runTaskEta,
+    Args: cobra.ExactArgs(2),
+    Short: "Update the ETA of a task",
+    Long: "Update the ETA of a task",
+  }
 
   cmdTaskDep = &cobra.Command{
     Use: "dep",
@@ -87,6 +96,7 @@ func init() {
 	cmdRoot.AddCommand(cmdTask)
 	cmdRoot.AddCommand(cmdUser)
 	cmdTask.AddCommand(cmdTaskDep)
+	cmdTask.AddCommand(cmdTaskEta)
 	cmdTask.AddCommand(cmdTaskUndep)
 	cmdUser.Flags().BoolVarP(&flgUserCreate, "new", "n", false, "Create new user if it does not exist")
   cmdTaskUndep.Flags().BoolVarP(&flgTaskUndepAll, "all", "a", false, "Remove all dependencies")
@@ -103,22 +113,34 @@ func runInit(cmd *cobra.Command, args []string) {
 	dbInitialize(dir)
 }
 
-func runTask(cmd *cobra.Command, args []string) {
+func runTaskAdd(cmd *cobra.Command, args []string) {
 	if len(args) == 0 {
 		tasks := dbTaskList()
-		fmt.Printf("                 Id                                 Name\n")
-		fmt.Printf("------------------------------------  ------------------------------\n")
+		fmt.Printf("                 Id                                 Name               Status    ETA\n")
+		fmt.Printf("------------------------------------  ------------------------------  -------  ------\n")
 		for _, t := range tasks {
-			fmt.Printf("%s  %-30s\n", t.Id, t.Name)
+			fmt.Printf("%s  %30s  %7s  %d\n", t.Id, t.Name, t.Status, t.Eta)
 		}
 		return
 	}
 	name := args[0]
-	dbTaskAdd(name)
+  var est = 1
+  if len(args) > 1 {
+    x, err := strconv.Atoi(args[1])
+    if err != nil {
+      log.Fatal(err)
+    }
+    est = x
+  }
+	dbTaskAdd(name, est)
 }
 
 func runTaskDep(cmd *cobra.Command, args []string) {
   dbTaskDep(args[0], args[1:])
+}
+
+func runTaskEta(cmd *cobra.Command, args []string) {
+  dbTaskEta(args[0], args[1])
 }
 
 func runTaskUndep(cmd *cobra.Command, args []string) {

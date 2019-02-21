@@ -23,11 +23,13 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"github.com/google/uuid"
-	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"os"
 	"path/filepath"
+  "strconv"
+
+	"github.com/google/uuid"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type Task struct {
@@ -35,9 +37,10 @@ type Task struct {
 	Name     string
 	Owner    sql.NullString
 	Assignee string
-	Days     sql.NullInt64
+	Eta     int
+	Est     int
+  Status  string
 	Progress sql.NullInt64
-	Status   sql.NullString
 	Priority sql.NullInt64
 	Ordering sql.NullFloat64
 }
@@ -59,9 +62,9 @@ const (
     name TEXT,
     owner TEXT,
     assignee TEXT,
-    days INT,
+    eta INT,
+    est INT,
     progress INT,
-    status TEXT,
     priority INT,
     ordering REAL,
     PRIMARY KEY (id)
@@ -85,7 +88,11 @@ const (
     PRIMARY KEY (key)
   );`
 
-	sqlTaskAdd = "INSERT INTO tasks (id, name, assignee) VALUES (?, ?, ?);"
+  sqlTaskFind = "SELECT id FROM tasks WHERE id LIKE ?;"
+
+	sqlTaskAdd = "INSERT INTO tasks (id, name, assignee, eta, est) VALUES (?, ?, ?, ?, ?);"
+  
+	sqlTaskEta = "UPDATE tasks SET eta = ? WHERE id = ?;"
 
 	sqlTaskUndepAll = "DELETE FROM deps WHERE parent = ?;"
 
@@ -95,9 +102,9 @@ const (
     name,
     owner,
     assignee,
-    days,
+    eta,
+    est,
     progress,
-    status,
     priority,
     ordering
   FROM tasks WHERE assignee = ?`
@@ -162,21 +169,30 @@ func dbConfigSet(key, value string) {
 	}
 }
 
-func dbConfigGet(key string) string {
+func dbConfigGet(key string, def string) string {
 	db := findopen()
 	row := db.QueryRow(sqlConfigGet, key)
 	var value string
 	if err := row.Scan(&value); err != nil {
-		log.Fatal(err)
+    return def
 	}
 	return value
 }
 
-func dbTaskAdd(name string) {
+func dbGetDefaultUser() string {
+	name := dbConfigGet(keyDefaultUser, "")
+  if name == "" {
+    log.Fatal("must set user first")
+  }
+  return name
+}
+
+func dbTaskAdd(name string, est int) {
 	db := findopen()
 	id := mkuuid()
-	username := dbConfigGet(keyDefaultUser)
-	_, err := db.Exec(sqlTaskAdd, id, name, username)
+	username := dbGetDefaultUser()
+  log.Println(sqlTaskAdd)
+	_, err := db.Exec(sqlTaskAdd, id, name, username, est, est)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -184,10 +200,7 @@ func dbTaskAdd(name string) {
 
 func dbTaskList() []Task {
 	db := findopen()
-	name := dbConfigGet(keyDefaultUser)
-	if name == "" {
-		log.Fatal("must set default user first")
-	}
+	name := dbGetDefaultUser()
 	rows, err := db.Query(sqlTaskList, name)
 	if err != nil {
 		log.Fatal(err)
@@ -201,14 +214,21 @@ func dbTaskList() []Task {
 			&t.Name,
 			&t.Owner,
 			&t.Assignee,
-			&t.Days,
+			&t.Eta,
+			&t.Est,
 			&t.Progress,
-			&t.Status,
 			&t.Priority,
 			&t.Ordering,
 		); err != nil {
 			log.Fatal(err)
 		}
+    if t.Eta == t.Est {
+      t.Status = "READY"
+    } else if t.Eta == 0 {
+      t.Status = "DONE"
+    } else {
+      t.Status = "WORK"
+    }
 		tasks = append(tasks, t)
 	}
 	return tasks
@@ -232,6 +252,34 @@ func dbTaskDep(parent string, children []string) {
   if _, err := db.Exec(sqlStmt, args...); err != nil {
     log.Fatal(err)
   }
+}
+
+func dbTaskEta(idpart string, etastr string) {
+  eta, err := strconv.Atoi(etastr)
+  if err != nil {
+    abort("ETA must be a number", err)
+  }
+  db := findopen()
+  id := onetask(idpart)
+  if _, err := db.Exec(sqlTaskEta, eta, id); err != nil {
+    abort("failed to run eta update sql", err)
+  }
+}
+
+func dbTaskFind(id string) []string {
+  wildcard := fmt.Sprintf("%%%s%%", id)
+  db := findopen()
+  retval := make([]string, 0)
+  if rows, err := db.Query(sqlTaskFind, wildcard); err == nil {
+    for rows.Next() {
+      var val string
+      if err := rows.Scan(&val); err != nil {
+        abort("failed to read task id from sql result", err)
+      }
+      retval = append(retval, val)
+    }
+  }
+  return retval
 }
 
 func dbTaskUndep(parent string, children []string) {
@@ -297,3 +345,19 @@ func open(dir string) *sql.DB {
 func mkuuid() string {
 	return uuid.New().String()
 }
+
+func onetask(s string) string {
+  ids := dbTaskFind(s)
+  if len(ids) == 0 {
+    log.Fatalf("no task for '%s' found", s)
+  }
+  if len(ids) > 1 {
+    log.Printf("given task id '%s' is ambiguous:\n", s)
+    for _, id := range ids {
+      log.Printf("  %s\n", id)
+    }
+    log.Fatalf("please try again")
+  }
+  return ids[0]
+}
+

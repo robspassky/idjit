@@ -31,6 +31,10 @@ func main() {
 	}
 }
 
+func abort(msg string, err error) {
+  log.Fatal("%s - %s", msg, err)
+}
+
 var cmdRoot = &cobra.Command{
 	Use:   "idjit",
 	Short: "a stupid dependency tracker",
