@@ -9,7 +9,7 @@ import (
 
 func startServer(port int, docrootdir string) {
   http.HandleFunc("/api/tasks", hndTaskList)
-  http.Handle("/", http.FileServer(http.Dir(docrootdir + "/.idjit-web")))
+  http.Handle("/", http.FileServer(http.Dir(docrootdir)))
   log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
 
