@@ -4,30 +4,24 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import './TaskTable.css'
+import './UserTable.css'
 
-class TaskTable extends Component {
+class UserTable extends Component {
   render() {
     return (
       <div>
-        <Table className="TaskTable">
+        <Table className="UserTable">
           <TableHead>
             <TableRow>
               <TableCell>Id</TableCell>
               <TableCell>Name</TableCell>
-              <TableCell>Assignee</TableCell>
-              <TableCell>Days Remaining</TableCell>
-              <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.tasks.map(task => (
-              <TableRow key={task.Id}>
-                <TableCell>{task.Id}</TableCell>
-                <TableCell>{task.Name}</TableCell>
-                <TableCell>{task.Assignee}</TableCell>
-                <TableCell>{task.Est}</TableCell>
-                <TableCell>{task.Status}</TableCell>
+            {this.props.users.map(user => (
+              <TableRow key={user.Id}>
+                <TableCell>{user.Id}</TableCell>
+                <TableCell>{user.Name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -37,5 +31,5 @@ class TaskTable extends Component {
   }
 }
 
-export default TaskTable
+export default UserTable
 

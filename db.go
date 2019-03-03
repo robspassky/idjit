@@ -32,6 +32,11 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+type User struct {
+  Id string
+  Name string
+}
+
 type Task struct {
 	Id       string
 	Name     string
@@ -175,6 +180,16 @@ func dbUserCreate(name string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func dbUserListAll() []User {
+	db := findopen()
+	rows, err := db.Query(sqlUserList)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	return popusers(rows)
 }
 
 func dbConfigSet(key, value string) {
@@ -398,5 +413,20 @@ func poptasks(rows *sql.Rows) []Task {
 		tasks = append(tasks, t)
 	}
   return tasks
+}
+
+func popusers(rows *sql.Rows) []User {
+	users := make([]User, 0)
+	for rows.Next() {
+		var u User
+		if err := rows.Scan(
+			&u.Id,
+			&u.Name,
+		); err != nil {
+			log.Fatal(err)
+		}
+		users = append(users, u)
+	}
+  return users
 }
 
