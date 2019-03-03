@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -15,9 +14,9 @@ class TaskTable extends Component {
           <TableHead>
           </TableHead>
           <TableBody>
-            {this.props.result.map(row => (
-              <TableRow key={row.id}>
-                <TableCell>{row.name}</TableCell>
+            {this.props.tasks.map(task => (
+              <TableRow key={task.Id}>
+                <TableCell>{task.Name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -27,10 +26,5 @@ class TaskTable extends Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state })
-
-const mapDispatchToProps = dispatch => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TaskTable)
+export default TaskTable
 

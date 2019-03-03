@@ -1,44 +1,38 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import Header from './Header.js'
 import TaskTable from './TaskTable.js'
 import './App.css'
 
-import { taskList } from './actions/taskList'
+function listTasks() {
+  return fetch("api/tasks").then(response => response.json())
+}
 
 class App extends Component {
-  componentDidMount() {
-    this.props.taskList()
+  constructor(props) {
+    super(props)
+    this.state = { tasks: [] }
+    listTasks().then(tasks => {
+      this.setState(state => {
+        return { tasks }
+      })
+    })
   }
 
   render() {
     return (
       <div className="App">
         <Header/>
-        <TaskTable/>
+        <TaskTable tasks={this.state.tasks}/>
         <pre>
         {
-          JSON.stringify(this.props)
+          JSON.stringify(this.state.tasks)
         }
         </pre>
       </div>
     )
   }
 
-  taskListAction = (event) => {
-    console.log('foo')
-    this.props.taskList()
-  }
-
 }
 
-const mapStateToProps = state => ({
-  ...state
-})
-
-const mapDispatchToProps = dispatch => ({
-  taskList: () => dispatch(taskList())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
 
