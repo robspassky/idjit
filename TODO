@@ -1,0 +1,30 @@
+* add task
+add a task 1 with an LOE
+based on LOE, task has an ETA
+
+** specify LOE with text
+1w 3d = 1 week + 3 days
+1w3d also okay
+also understand y - year, m - month, h - hour
+
+** CLI - add task (description, LOE)
+** CLI - list tasks (description, LOE, ETA)
+
+* add progress/remaining
+add field Remaining LOE
+add field Progress (a percentage)
+when updating progress on task, Remaining LOE = LOE * Progress (percentage)
+
+** calc ETA
+add remaining LOE To current date to get ETA
+
+* make task dependent
+add another task 2 with an LOE
+make task 1 dependent on task 2
+see that task 1 ETA = task 1 Remaining LOE + task 2 Remaining LOE
+
+** multiple dependencies
+add another task 3 with an LOE
+make task 1 dependent on task 3
+see that task 1 ETA = task 1 Remaining LOE + task 2 Remaining LOE + task 3 Remaining LOE
+
