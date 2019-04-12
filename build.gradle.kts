@@ -22,6 +22,9 @@ repositories {
 }
 
 dependencies {
+    // sqlite3
+    implementation("org.xerial:sqlite-jdbc:3.27.2.1")
+
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 

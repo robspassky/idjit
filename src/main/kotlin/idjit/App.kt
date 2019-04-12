@@ -3,38 +3,11 @@
  */
 package idjit
 
-import java.sql.Timestamp
-import java.time.Duration
-import java.time.Instant
-import java.time.temporal.ChronoUnit
-
 class App {
     val greeting: String
         get() {
             return "Hello world."
         }
-}
-
-data class Task(val desc: String, val loe: String) {
-
-    val eta: Timestamp
-        get() = Duration.ofDays(parseLoe(loe)).let { days ->
-            Timestamp.from((
-                children
-                    .map{ it.eta }
-                    .max()
-                    ?.toInstant()
-                    ?: Instant
-                        .now()
-                        .truncatedTo(ChronoUnit.DAYS)
-                ).plus(days)
-            )
-        }
-
-    val children = mutableSetOf<Task>()
-
-    fun dep(child: Task) = children.add(child)
-
 }
 
 val timeUnits = mapOf("d" to 1L, "w" to 7L, "m" to 30L, "y" to 365L)
@@ -53,5 +26,19 @@ fun parseLoe(s: String): Long = Regex(LOE_REGEX)
     }
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    when (args[0]) {
+        "init" -> doInit()
+        "add" -> doAdd(args)
+    }
 }
+fun doAdd(args: Array<String>) {
+    Db().use {
+        val t = Task(args[1], args[2])
+        it.insertTask(t)
+    }
+}
+
+fun doInit() {
+
+}
+

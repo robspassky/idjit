@@ -1,80 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12f82d67-e108-4ae1-962b-6b995f4d8dc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/idjit.ipr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/idjit.iws" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/idjit.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/idjit.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/idjit/App.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinScripting.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_buffer_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_dns_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_http2_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_http_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_socks_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_common_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_handler_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_handler_proxy_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_resolver_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_resolver_dns_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_transport_4_1_30_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_2_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava_1_3_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_auth_common_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_bridge_common_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_codegen_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_core_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_junit5_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_rx_gen_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_rx_java2_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_rx_java_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_web_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_web_client_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_vertx_vertx_web_common_3_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_3_21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mvel_mvel2_2_3_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/idjit.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/idjit.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/idjit.test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="12f82d67-e108-4ae1-962b-6b995f4d8dc5" name="Default Changelist" comment="Merge branch 'master' of https://github.com/robspassky/idjit&#10;&#10;Add basic task functionality.&#10;Add database.&#10;Start adding CLI.&#10;# Conflicts:&#10;#&#9;build.gradle.kts&#10;#&#9;gradle/wrapper/gradle-wrapper.jar&#10;#&#9;gradle/wrapper/gradle-wrapper.properties&#10;#&#9;gradlew&#10;#&#9;gradlew.bat&#10;#&#9;idjit.iml&#10;#&#9;settings.gradle.kts">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/idjit/Db.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/idjit/Task.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/idjit/Cli.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/idjit/DbTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/idjit/TaskTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idjit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/idjit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/MainVerticle.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/idjit.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/idjit.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idjit.iws" beforeDir="false" afterPath="$PROJECT_DIR$/idjit.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idjit.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/idjit.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idjit.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/idjit.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/idjit/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/idjit/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -145,17 +85,61 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42036432">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/App.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="590">
-                  <caret line="31" selection-start-line="31" selection-end-line="31" />
+                <state relative-caret-position="744">
+                  <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/build.gradle.kts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="144">
+                  <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/settings.gradle.kts">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/Db.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="312">
+                  <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#15#123#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TODO">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="96">
+                  <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/Task.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="768">
+                  <caret line="38" selection-start-line="38" selection-end-line="38" />
                 </state>
               </provider>
             </entry>
@@ -164,50 +148,41 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="464">
+                <state relative-caret-position="480">
+                  <caret line="22" selection-start-line="22" selection-end-line="22" />
+                  <folding>
+                    <element signature="e#90#178#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/TaskTest.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret line="55" selection-start-line="55" selection-end-line="55" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/DbTest.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="367">
                   <caret line="48" selection-start-line="48" selection-end-line="48" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/Cli.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="299">
-                  <caret line="13" selection-start-line="13" selection-end-line="13" />
-                  <folding>
-                    <element signature="e#435#457#0" expanded="true" />
-                    <element signature="e#457#458#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/ParentRunner.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="239">
-                  <caret line="327" selection-start-line="327" selection-end-line="327" />
-                  <folding>
-                    <element signature="e#12146#12217#0" expanded="true" />
-                    <element signature="e#12146#12217#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParameters.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="379">
-                  <caret line="131" column="27" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
-                  <folding>
-                    <element signature="e#5189#5190#0" expanded="true" />
-                    <element signature="e#5229#5230#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="456">
+                  <caret line="19" selection-start-line="19" selection-end-line="19" />
                 </state>
               </provider>
             </entry>
@@ -216,14 +191,28 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/build.gradle.kts" />
         <option value="$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/idjit/TaskTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/idjit/Task.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/idjit/App.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/idjit/DbTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/idjit/Db.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/idjit/Cli.kt" />
+        <option value="$PROJECT_DIR$/TODO" />
       </list>
     </option>
   </component>
@@ -250,6 +239,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Course" />
+      <pane id="Scope" />
+      <pane id="NBKnowledgePane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -308,10 +301,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="NBKnowledgePane" />
-      <pane id="PackagesPane" />
-      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,7 +311,10 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.idjit/db" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Kotlin" />
   </component>
   <component name="RunDashboard">
@@ -337,7 +329,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest.testSimpleDep">
+  <component name="RunManager" selected="Gradle.test">
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -375,8 +367,37 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="assemble" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="HOME" value="C:\Users\robsp" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="HOME" value="C:\Users\robsp" />
+          </map>
+        </option>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
@@ -394,7 +415,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AppTest.testAppCanCreateTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CliTest.canAddTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="idjit.test" />
       <extension name="coverage">
         <pattern>
@@ -403,8 +424,57 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="idjit" />
-      <option name="MAIN_CLASS_NAME" value="idjit.AppTest" />
-      <option name="METHOD_NAME" value="testAppCanCreateTask" />
+      <option name="MAIN_CLASS_NAME" value="idjit.CliTest" />
+      <option name="METHOD_NAME" value="canAddTask" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs>
+        <env name="HOME" value="C:\Users\robsp" />
+      </envs>
+      <method v="2">
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DbTest.canListTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="idjit.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="idjit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="idjit" />
+      <option name="MAIN_CLASS_NAME" value="idjit.DbTest" />
+      <option name="METHOD_NAME" value="canListTasks" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DbTest.saveTaskPreservesId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="idjit.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="idjit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="idjit" />
+      <option name="MAIN_CLASS_NAME" value="idjit.DbTest" />
+      <option name="METHOD_NAME" value="saveTaskPreservesId" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -416,7 +486,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testAppHasAGreeting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DbTest.testSaveDeps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="idjit.test" />
       <extension name="coverage">
         <pattern>
@@ -425,8 +495,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="idjit" />
-      <option name="MAIN_CLASS_NAME" value="idjit.AppTest" />
-      <option name="METHOD_NAME" value="testAppHasAGreeting" />
+      <option name="MAIN_CLASS_NAME" value="idjit.DbTest" />
+      <option name="METHOD_NAME" value="testSaveDeps" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -438,7 +508,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testParseLoe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskTest.testProgressEffect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="idjit.test" />
       <extension name="coverage">
         <pattern>
@@ -447,30 +517,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="idjit" />
-      <option name="MAIN_CLASS_NAME" value="idjit.AppTest" />
-      <option name="METHOD_NAME" value="testParseLoe" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest.testSimpleDep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="idjit.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="idjit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="idjit" />
-      <option name="MAIN_CLASS_NAME" value="idjit.AppTest" />
-      <option name="METHOD_NAME" value="testSimpleDep" />
+      <option name="MAIN_CLASS_NAME" value="idjit.TaskTest" />
+      <option name="METHOD_NAME" value="testProgressEffect" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -483,12 +531,18 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
+      <envs>
+        <env name="HOME" value="C:\Users\robsp" />
+      </envs>
       <method v="2">
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
@@ -505,14 +559,33 @@
         <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.test" />
+      <item itemvalue="Gradle.assemble" />
+      <item itemvalue="JUnit.CliTest.canAddTask" />
+      <item itemvalue="JUnit.DbTest.canListTasks" />
+      <item itemvalue="JUnit.DbTest.saveTaskPreservesId" />
+      <item itemvalue="JUnit.DbTest.testSaveDeps" />
+      <item itemvalue="JUnit.TaskTest.testProgressEffect" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppTest.testSimpleDep" />
-        <item itemvalue="JUnit.AppTest.testAppCanCreateTask" />
-        <item itemvalue="JUnit.AppTest.testAppHasAGreeting" />
-        <item itemvalue="JUnit.AppTest.testParseLoe" />
+        <item itemvalue="JUnit.CliTest.canAddTask" />
+        <item itemvalue="JUnit.DbTest.canListTasks" />
+        <item itemvalue="JUnit.DbTest.testSaveDeps" />
+        <item itemvalue="JUnit.DbTest.saveTaskPreservesId" />
+        <item itemvalue="JUnit.TaskTest.testProgressEffect" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SQLiteDataSourceStorage">
+    <local-data-sources>
+      <data-source>
+        <option name="databaseName" value="db" />
+        <option name="filePath" value="C:\Users\robsp\.idjit\db" />
+        <option name="name" value="idjit" />
+      </data-source>
+    </local-data-sources>
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
@@ -539,42 +612,50 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test - 2019.04.11 at 21h 57m 10s.xml">
+    <history-entry file="DbTest_canListTasks - 2019.04.12 at 07h 36m 31s.xml">
+      <configuration name="DbTest.canListTasks" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="test - 2019.04.12 at 07h 36m 38s.xml">
       <configuration name="test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="test - 2019.04.11 at 22h 20m 16s.xml">
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 38m 35s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 39m 56s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 40m 50s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="test - 2019.04.12 at 07h 41m 03s.xml">
       <configuration name="test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 26m 27s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 41m 12s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 34m 03s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 42m 37s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 34m 21s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 43m 18s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 34m 45s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
+    <history-entry file="CliTest_canAddTask - 2019.04.12 at 07h 44m 12s.xml">
+      <configuration name="CliTest.canAddTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 34m 58s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 35m 26s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 36m 10s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AppTest_testSimpleDep - 2019.04.11 at 22h 39m 48s.xml">
-      <configuration name="AppTest.testSimpleDep" configurationId="JUnit" />
-    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14938419" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15176798" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -583,16 +664,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Image Layers" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="GraphQL" />
+      <window_info anchor="bottom" id="SQLite Console" weight="0.3298887" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49940404" weight="0.2527822" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.399841" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.399841" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3298887" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3298887" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Elm Compiler" order="10" />
       <window_info anchor="bottom" id="Sequence" order="11" />
@@ -604,8 +685,8 @@
       <window_info anchor="bottom" id="Version Control" order="17" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="18" />
       <window_info anchor="bottom" id="Tail" order="19" />
-      <window_info anchor="bottom" id="Messages" order="20" weight="0.3298887" />
-      <window_info anchor="right" id="SQLite Explorer" weight="0.14302741" />
+      <window_info anchor="bottom" id="Messages" order="20" visible="true" weight="0.3298887" />
+      <window_info anchor="bottom" id="GraphQL" order="21" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -620,10 +701,14 @@
       <window_info anchor="right" id="Maven" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="12" />
       <window_info anchor="right" id="Theme Preview" order="13" />
+      <window_info anchor="right" id="SQLite Explorer" order="14" visible="true" weight="0.1954708" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/robspassky/idjit&#10;&#10;# Conflicts:&#10;#&#9;build.gradle.kts&#10;#&#9;gradle/wrapper/gradle-wrapper.jar&#10;#&#9;gradle/wrapper/gradle-wrapper.properties&#10;#&#9;gradlew&#10;#&#9;gradlew.bat&#10;#&#9;idjit.iml&#10;#&#9;settings.gradle.kts" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/robspassky/idjit&#10;&#10;Add basic task functionality.&#10;Add database.&#10;Start adding CLI.&#10;# Conflicts:&#10;#&#9;build.gradle.kts&#10;#&#9;gradle/wrapper/gradle-wrapper.jar&#10;#&#9;gradle/wrapper/gradle-wrapper.properties&#10;#&#9;gradlew&#10;#&#9;gradlew.bat&#10;#&#9;idjit.iml&#10;#&#9;settings.gradle.kts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/robspassky/idjit&#10;&#10;Add basic task functionality.&#10;Add database.&#10;Start adding CLI.&#10;# Conflicts:&#10;#&#9;build.gradle.kts&#10;#&#9;gradle/wrapper/gradle-wrapper.jar&#10;#&#9;gradle/wrapper/gradle-wrapper.properties&#10;#&#9;gradlew&#10;#&#9;gradlew.bat&#10;#&#9;idjit.iml&#10;#&#9;settings.gradle.kts" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -649,9 +734,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idjit.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idjit.ipr">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idjit.iws">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idjit.main.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idjit.test.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParameters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
+        <state relative-caret-position="414">
           <caret line="131" column="27" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
           <folding>
             <element signature="e#5189#5190#0" expanded="true" />
@@ -660,20 +766,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/TaskTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state>
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/Task.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/App.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="744">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/DbTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/AppTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#90#178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/idjit/Cli.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/idjit/Db.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <folding>
+            <element signature="e#15#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle.kts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle.kts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
         </state>
       </provider>
     </entry>
