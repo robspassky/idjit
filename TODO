@@ -1,5 +1,4 @@
 * cli
-init to create database (explict directory name or look for parent github dir)
 other actions -- looking for closest parent with .idjit.db
 add project / sequence number as key
 list tasks
@@ -43,3 +42,4 @@ add field Remaining LOE
 add field Progress (a percentage)
 when updating progress on task, Remaining LOE = LOE * Progress (percentage)
 save dependencies
+init to create database (explict directory name or look for parent github dir)

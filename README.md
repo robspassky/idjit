@@ -106,7 +106,6 @@ tags is empty
 A uuid will be generated for the job and returned as the output of this command.
 
 uuid, "job name", state, status
-uuuuu jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj ssssssssssss tttttttttt
 
     $ idjit jobs
     $ idjit <uuid> field value

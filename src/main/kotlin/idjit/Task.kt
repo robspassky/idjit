@@ -8,23 +8,28 @@ import java.time.temporal.ChronoUnit
 import java.util.*
 import kotlin.math.roundToLong
 
-class Task(val id: String, val desc: String, val loe: String, childrenstr: String) {
+class Task(
+    val id: String,
+    val desc: String,
+    val loe: String,
+    childrenstr: String
+) {
 
-    constructor(desc: String, loe: String) : this(UUID.randomUUID().toString(), desc, loe, "")
+    constructor(desc: String, loe: String)
+        : this(UUID.randomUUID().toString(), desc, loe, "")
 
     var progress: Int = 0
-
-    set(value) {
-        if (value > 100 || value < 0) {
-            throw IllegalArgumentException("Progress is a percentage from 0-100")
+        set(value) {
+            if (value > 100 || value < 0) {
+                throw IllegalArgumentException("Progress is a percentage from 0-100")
+            }
+            field = value
         }
-        field = value
-    }
 
     val eta: Timestamp
         get() = Timestamp.from((
             children
-                .map{ All.getValue(it).eta }
+                .map { All.getValue(it).eta }
                 .max()
                 ?.toInstant()
                 ?: Instant

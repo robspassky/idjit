@@ -3,12 +3,9 @@
  */
 package idjit
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello world."
-        }
-}
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.system.exitProcess
 
 val timeUnits = mapOf("d" to 1L, "w" to 7L, "m" to 30L, "y" to 365L)
 const val LOE_REGEX = "\\s*(?:(\\d+)\\s*([ymwd]))\\s*"
@@ -26,19 +23,34 @@ fun parseLoe(s: String): Long = Regex(LOE_REGEX)
     }
 
 fun main(args: Array<String>) {
-    when (args[0]) {
-        "init" -> doInit()
-        "add" -> doAdd(args)
+    if (args.size == 2 && args[0] == "init") {
+        doInit(args[1])
+        exitProcess(0)
+    }
+    val db = Db(findDb("")!!)
+    if (args.size > 1) {
+        doAdd(db, args)
+        exitProcess(0)
     }
 }
-fun doAdd(args: Array<String>) {
-    Db().use {
-        val t = Task(args[1], args[2])
-        it.insertTask(t)
+
+fun doInit(file: String) {
+    Db.initialize(file)
+}
+
+fun doAdd(db : Db, args: Array<String>) {
+    val t = Task(args[0], args[1])
+    db.insertTask(t)
+}
+
+fun findDb(dir: String, name: String = ".idjit.db") : String? {
+    var p = Paths.get(dir)
+    while (p != null) {
+        val db = p.resolve(name)
+        if (Files.exists(db)) {
+            return db.toString()
+        }
+        p = p.parent
     }
+    return null
 }
-
-fun doInit() {
-
-}
-

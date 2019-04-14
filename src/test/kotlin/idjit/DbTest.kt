@@ -84,6 +84,12 @@ class DbTest {
 
     }
 
+    @Test
+    fun canInitialize() {
+        Db.initialize(TEST_DB)
+        assertTrue(Files.exists(Paths.get(TEST_DB)))
+    }
+
     @AfterTest
     fun removeDb() {
         Files.deleteIfExists(Paths.get(TEST_DB))

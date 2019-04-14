@@ -27,15 +27,7 @@ val TASKS_SQL = mapOf(
     "list" to "SELECT * FROM tasks"
 )
 
-fun getDefaultDbName(): String =
-    Paths.get(System.getenv("HOME")!!, ".idjit", "db").let {
-        it.parent.toFile().mkdirs()
-        it.toString()
-            .also { println(it) }
-    }
-
 class Db(name: String) : Closeable {
-    constructor() : this(getDefaultDbName())
 
     val conn = Paths
         .get(name)
@@ -87,6 +79,18 @@ class Db(name: String) : Closeable {
 
     override fun close() {
         conn.close()
+    }
+
+    companion object {
+        fun initialize(f: String) {
+            DriverManager
+                .getConnection("jdbc:sqlite:$f")
+                .use { conn ->
+                    conn.createStatement().use { stmt ->
+                        stmt.executeUpdate(TASKS_SQL.getValue("ddl"))
+                    }
+                }
+        }
     }
 
 }

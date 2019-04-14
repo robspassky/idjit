@@ -3,20 +3,54 @@
  */
 package idjit
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
+import io.mockk.mockk
+import io.mockk.verify
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.test.*
+
 
 class AppTest {
-    @Test
-    fun testAppHasAGreeting() {
-        val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
-    }
+    val dbpath = Paths.get(".idjit.db")
 
     @Test
     fun testParseLoe() {
         assertEquals(7, parseLoe("1w"))
         assertEquals(463, parseLoe("1d3m1y1w"))
+    }
+
+    @Test
+    fun canInit() {
+        doInit(dbpath.fileName.toString())
+        assertTrue(Files.exists(dbpath), "db not created")
+    }
+
+    @Test
+    fun canFindDb() {
+        Files.createFile(dbpath)
+        val dbp = Paths.get(findDb("", dbpath.fileName.toString()))
+        assertNotNull(dbp, "could not find db")
+        assertTrue(Files.isSameFile(dbpath, dbp), "is same file")
+    }
+
+    @Test
+    fun canAdd() {
+        val mdb = mockk<Db>(relaxed = true)
+        val args = arrayOf(
+            "task name",
+            "1w"
+        )
+        doAdd(mdb, args)
+        verify(exactly = 1) { mdb.insertTask(allAny())}
+    }
+
+    @BeforeTest
+    fun setup() {
+        Files.deleteIfExists(dbpath)
+    }
+
+    @AfterTest
+    fun teardown() {
+        Files.deleteIfExists(dbpath)
     }
 }
